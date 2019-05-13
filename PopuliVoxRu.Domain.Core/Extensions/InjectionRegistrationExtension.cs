@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace PopuliVoxRu.Utils
+namespace PopuliVoxRu.Domain.Core.Extensions
 {
     public static class InjectionRegistrationExtension
     {

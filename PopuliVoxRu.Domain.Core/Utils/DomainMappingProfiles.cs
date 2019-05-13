@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace PopuliVoxRu.Utils
+namespace PopuliVoxRu.Domain.Core.Utils
 {
     public class DomainMappingProfiles : Profile
     {

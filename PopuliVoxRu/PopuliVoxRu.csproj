@@ -10,6 +10,13 @@
     <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\PopuliVoxRu.Domain.Core\PopuliVoxRu.Domain.Core.csproj" />
+    <ProjectReference Include="..\PopuliVoxRu.Infrastructure.Data\PopuliVoxRu.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

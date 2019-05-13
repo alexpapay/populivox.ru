@@ -1,13 +1,17 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PopuliVoxRu.Utils;
+using PopuliVoxRu.Domain.Core.Extensions;
+using PopuliVoxRu.Domain.Core.Models.Identity;
+using PopuliVoxRu.Domain.Core.Utils;
+using PopuliVoxRu.Infrastructure.Data.Context;
 
 namespace PopuliVoxRu
 {
@@ -34,6 +38,18 @@ namespace PopuliVoxRu
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            // Entity framework:
+            services.AddDbContext<PopuliVoxRuWebContext>(options =>
+                options.UseMySQL(Configuration.GetConnectionString("populivox_web")));
+
+            services.AddDbContext<PopuliVoxRuIdentityContext>(options =>
+                options.UseMySQL(Configuration.GetConnectionString("populivox_identity")));
+
+            // Identity:
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<PopuliVoxRuIdentityContext>()
+                .AddDefaultTokenProviders();
 
             // Auto mapper configuration and init:
             MapperConfiguration mappingConfig =
@@ -65,6 +81,7 @@ namespace PopuliVoxRu
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
+            app.UseAuthentication();
             app.UseDefaultFiles();
 
             app.UseMvc(routes =>
