@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace PopuliVoxRu.Domain.Core.Models.Identity
+namespace PopuliVoxRu.Domain.Core.Tables.Identity
 {
     public class User : IdentityUser
     {

@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PopuliVoxRu.Domain.Core.Extensions;
-using PopuliVoxRu.Domain.Core.Models.Identity;
-using PopuliVoxRu.Domain.Core.Utils;
+using PopuliVoxRu.Domain.Core.Tables.Identity;
 using PopuliVoxRu.Infrastructure.Data.Context;
+using PopuliVoxRu.Utils;
 
 namespace PopuliVoxRu
 {

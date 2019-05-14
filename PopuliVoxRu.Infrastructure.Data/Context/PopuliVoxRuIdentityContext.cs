@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PopuliVoxRu.Domain.Core.Models.Identity;
+using PopuliVoxRu.Domain.Core.Tables.Identity;
 
 namespace PopuliVoxRu.Infrastructure.Data.Context
 {
