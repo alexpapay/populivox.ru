@@ -1,0 +1,91 @@
+﻿@model PopuliVoxRu.View.Data.ViewModels.Identity.UserRegisterViewModel
+
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="card bg-light">
+            <article class="card-body mx-auto">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="card-title mt-3 text-center">Регистрация</h4>
+                <p class="text-center">Создайте свой аккаунт, чтобы писать отзывы:</p>
+                <p>
+                    <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i> Войти через Twitter</a>
+                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i> Войти через facebook</a>
+                </p>
+                <p class="divider-text">
+                    <span class="bg-light">ИЛИ</span>
+                </p>
+                <form method="post" asp-controller="Account" asp-action="Register">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <input asp-for="Name" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Name)" type="text" required="">
+                        <input asp-for="Surname" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Surname)" type="text" required="">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user-tie"></i></span>
+                        </div>
+                        <input asp-for="Age" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Age)" type="text" required="">
+                        <span asp-validation-for="Age"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-venus-mars"></i></span>
+                        </div>
+                        <select class="custom-select">
+                            <option selected="">Выберите пол</option>
+                            <option value="0">Мужской</option>
+                            <option value="1">Женский</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-cogs"></i></span>
+                        </div>
+                        <select class="custom-select">
+                            <option selected="">Выберите уровень</option>
+                            <option value="0">Дилетант</option>
+                            <option value="1">Опытный</option>
+                            <option value="1">Средне</option>
+                            <option value="1">Специалист</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-phone"></i></span>
+                        </div>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PhoneNumber)" type="tel" required="">
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        <input asp-for="Email" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Email)" type="email" required="">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input asp-for="Password" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Password)" type="password" required="">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input asp-for="PasswordConfirm" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PasswordConfirm)" type="password" required="">
+                        <span asp-validation-for="PasswordConfirm"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </article>
+        </div>
+    </div>
+</div>
+
