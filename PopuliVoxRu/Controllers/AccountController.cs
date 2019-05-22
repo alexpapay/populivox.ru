@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PopuliVoxRu.Domain.Core.Tables.Identity;
 using PopuliVoxRu.View.Data.ViewModels.Identity;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace PopuliVoxRu.Controllers
 {
@@ -35,7 +36,7 @@ namespace PopuliVoxRu.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result =
+                SignInResult result =
                     await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
@@ -44,15 +45,11 @@ namespace PopuliVoxRu.Controllers
                     {
                         return Redirect(model.ReturnUrl);
                     }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+
+                    return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Неправильный логин и (или) пароль");
-                }
+
+                ModelState.AddModelError("", "Неправильный логин и (или) пароль");
             }
             return View(model);
         }
@@ -97,11 +94,11 @@ namespace PopuliVoxRu.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                foreach (var error in result.Errors)
+                foreach (IdentityError error in result.Errors)
                     ModelState.AddModelError(string.Empty, error.Description);
             }
 
-            return View(model);
+            return View("Register", model);
         }
     }
 }

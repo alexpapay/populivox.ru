@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutMainPage";
+    ViewData["Title"] = "Главная страница";
 }
 
 <!-- Masthead -->
@@ -12,8 +13,12 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 font-weight-light mb-5">Не главное приветственное слово</p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger m-2" href="#about">Оставить отзыв</a>
-                <a class="btn btn-primary btn-xl js-scroll-trigger m-2" href="#about">Оставить претензию</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger m-2" @(User.Identity.IsAuthenticated ? $"href={Url.Action("Index", "Account")}" : "data-toggle=modal data-target=#registerModalCenter href=")>
+                    Оставить отзыв
+                </a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger m-2" @(User.Identity.IsAuthenticated ? $"href={Url.Action("Index", "Account")}" : "data-toggle=modal data-target=#registerModalCenter href=")>
+                    Оставить претензию
+                </a>
             </div>
         </div>
     </div>
@@ -39,8 +44,8 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <i class="fas fa-4x fa-water text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Автомойки</h3>
+                    <i class="fas fa-4x fa-tachometer-alt text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Автосалоны</h3>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">Шабаш-гараж <span class="badge badge-primary badge-pill">14</span></li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">Шабаш-гараж <span class="badge badge-primary badge-pill">14</span></li>
@@ -51,8 +56,8 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <i class="fas fa-4x fa-tachometer-alt text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Тюнинг-ателье</h3>
+                    <i class="fas fa-4x fa-water text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Автомойки</h3>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">Шабаш-гараж <span class="badge badge-primary badge-pill">14</span></li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">Шабаш-гараж <span class="badge badge-primary badge-pill">14</span></li>

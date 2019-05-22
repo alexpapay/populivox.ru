@@ -1,5 +1,15 @@
 ﻿namespace PopuliVoxRu.Domain.Core.Utils
 {
+    public enum PagesEnum
+    {
+        Main,
+        Register,
+        Login,
+        AddFeedback,
+        AddClaim,
+        AddCustomer
+    }
+
     public enum Sex
     {
         /// <summary>
